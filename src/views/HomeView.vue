@@ -1,9 +1,11 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import LogoutButtonTest from '@/components/LogoutButtonTest.vue';
+
+
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <LogoutButtonTest />
   </main>
 </template>

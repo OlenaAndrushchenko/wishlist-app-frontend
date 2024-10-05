@@ -1,19 +1,33 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import SignInForm from './SignInForm.vue'
 import SignUpForm from './SignUpForm.vue'
 import BaseCloseButton from '../base/BaseCloseButton.vue';
 
+const props = defineProps({
+  initialForm: {
+    type: String,
+    default: 'login',
+  },
+});
 
-const currentForm = ref('login-form')
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close']);
+
+const currentForm = ref(props.initialForm);
+
+watch(
+  () => props.initialForm,
+  (newVal) => {
+    currentForm.value = newVal;
+  }
+);
 
 function switchForm(form) {
-    currentForm.value = form
+    currentForm.value = form;
 }
 
 const closeModal = () => {
-    emit('close')
+    emit('close');
 }
 </script>
 
@@ -22,15 +36,15 @@ const closeModal = () => {
     <div class="relative mx-4 md:mx-16 bg-primary-50 rounded-[20px] max-h-[90vh] overflow-y-auto">
       
       <div class="min-w-[90vw] sm:min-w-[500px] px-10 py-10 flex-col gap-6 inline-flex text-secondary-700">
-        <component :is="currentForm === 'login-form' ? SignInForm : SignUpForm" @register-success="closeModal" :closeModal="closeModal" />
+        <component :is="currentForm === 'login' ? SignInForm : SignUpForm" @register-success="closeModal" :closeModal="closeModal" />
     
-        <div v-if="currentForm === 'login-form'" class="flex flex-wrap gap-1.5">
+        <div v-if="currentForm === 'login'" class="flex flex-wrap gap-1.5">
           <span>Don't have an account?</span>
-          <button @click="switchForm('register-form')" class="text-primary-700 hover:text-primary-800 font-bold">Sign Up</button>
+          <button @click="switchForm('register')" class="text-primary-700 hover:text-primary-800 font-bold">Sign Up</button>
         </div>
         <div v-else class="flex flex-wrap gap-1.5">
           <span>Have an account?</span>
-          <button @click="switchForm('login-form')" class="text-primary-700 hover:text-primary-800 font-bold">Login</button>
+          <button @click="switchForm('login')" class="text-primary-700 hover:text-primary-800 font-bold">Login</button>
         </div>
       </div>
       

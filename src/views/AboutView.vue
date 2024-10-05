@@ -1,15 +1,18 @@
+<script setup>
+import LoginFormTest from '@/components/LoginFormTest.vue';
+import RegistrationFormTest from '@/components/RegistrationFormTest.vue';
+import LogoutButtonTest from '@/components/LogoutButtonTest.vue';
+import AuthModal from '@/components/auth/AuthModal.vue';
+</script>
+
 <template>
   <div class="about">
     <h1>This is an about page</h1>
   </div>
+  <LoginFormTest />
+  <RegistrationFormTest />
+  <LogoutButtonTest />
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
 </style>

@@ -11,5 +11,12 @@ export default {
     },
   },
   plugins: [],
+  safelist: [
+    'text-1xl', 'md:text-2xl',
+    'text-2xl', 'md:text-3xl',
+    'text-3xl', 'md:text-4xl',
+    'text-4xl', 'md:text-5xl',
+    'text-5xl', 'md:text-6xl',
+  ],
 }
 

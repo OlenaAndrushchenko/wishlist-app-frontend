@@ -27,7 +27,7 @@ emit('update:modelValue', event.target.value);
 
 <template>
     <div class="flex flex-col items-start gap-1.5 w-full">
-      <label :for="id" class="text-secondary-700 text-sm font-semibold">
+      <label :for="id" class="text-secondary-700 text-sm font-medium">
         {{ label }}
         <span v-if="required" class="text-red">*</span>
       </label>
@@ -39,7 +39,8 @@ emit('update:modelValue', event.target.value);
         @input="updateValue"
         :required="required"
         :aria-required="required"
-        class="w-full p-2.5 bg-white text-secondary-700 text-sm rounded-md placeholder:text-secondary-400 cursor-pointer border border-transparent hover:border-primary-300 focus:outline-none focus:ring-primary-600 focus:border-primary-600 block"
+        :aria-invalid="!!error"
+        class="w-full p-2.5 bg-white text-secondary-700 text-sm rounded-md placeholder:text-secondary-400 border border-transparent hover:border-primary-300 focus:outline-none focus:ring-primary-600 focus:border-primary-600 block"
       />
       <p v-if="error" class="text-red-500 text-sm" aria-live="polite">{{ error }}</p>
     </div>

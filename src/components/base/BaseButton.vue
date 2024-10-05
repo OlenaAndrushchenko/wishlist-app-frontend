@@ -23,13 +23,13 @@ const props = defineProps({
 const variantClasses = computed(() => {
   switch (props.variant) {
     case "primary":
-      return "text-primary-50 inline-flex items-center bg-primary-700 hover:bg-primary-800 border-2 border-transparent font-medium text-center";
+      return "text-primary-50 items-center bg-primary-700 hover:bg-primary-800 border-2 border-transparent font-medium text-center";
     case "secondary":
-      return "text-primary-900 inline-flex items-center border-2 border-primary-700 hover:bg-primary-700/15 font-medium text-center";
+      return "text-primary-900 items-center border-2 border-primary-700 hover:bg-primary-700/15 font-medium text-center";
     case "danger":
-      return "text-red-50 inline-flex items-center bg-red-700 hover:bg-red-800 border-2 border-transparent font-medium text-center";
+      return "text-red-50 items-center bg-red-700 hover:bg-red-800 border-2 border-transparent font-medium text-center";
     default:
-      return "text-primary-50 inline-flex items-center bg-primary-700 hover:bg-primary-800 font-medium text-center";
+      return "text-primary-50 items-center bg-primary-700 hover:bg-primary-800 font-medium text-center";
   }
 });
 

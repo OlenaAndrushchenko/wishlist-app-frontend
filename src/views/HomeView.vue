@@ -1,11 +1,9 @@
 <script setup>
-import LogoutButtonTest from '@/components/LogoutButtonTest.vue';
-
 
 </script>
 
 <template>
   <main>
-    <LogoutButtonTest />
+    <h1>Home</h1>
   </main>
 </template>

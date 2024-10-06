@@ -1,4 +1,5 @@
 import WishlistService from "@/core/api/spring/wishlist/WishlistService";
+import { useWishStore } from "@/stores/wishStore";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
@@ -21,6 +22,10 @@ export const useWishlistsStore = defineStore("wishlists", () => {
         try {
             const data = await new WishlistService().readWishlist(id);
             currentWishlist.value = data;
+
+            const wishStore = useWishStore();
+            wishStore.setWishes(data.items);
+
             return data;
         } catch (error) {
             console.error("Failed to get wishlist", error);

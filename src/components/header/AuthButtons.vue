@@ -3,6 +3,9 @@ import { computed, ref } from "vue";
 import { useAuthStore } from "@/stores/authStore";
 import BaseButton from "../base/BaseButton.vue";
 import AuthModal from "../auth/AuthModal.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const authStore = useAuthStore();
 const isAuthenticated = computed(() => authStore.isAuthenticated);
@@ -26,6 +29,7 @@ const closeModal = () => {
 
 const logout = () => {
     authStore.logout();
+    router.push('/');
 };
 </script>
 

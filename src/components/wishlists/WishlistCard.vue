@@ -4,7 +4,7 @@ import { useWishlistsStore } from "@/stores/wishlistStore";
 import ConfirmationModal from "@/components/common/ConfirmationModal.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faShareAlt, faLock, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-import WishlistFormModal from "./WishListFormModal.vue";
+import WishlistFormModal from "./WishlistFormModal.vue";
 import BaseHeading from "../base/BaseHeading.vue";
 
 const props = defineProps({

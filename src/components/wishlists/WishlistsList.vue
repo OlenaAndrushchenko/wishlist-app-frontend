@@ -5,7 +5,7 @@ import { storeToRefs } from "pinia";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import WishlistCard from "./WishlistCard.vue";
-import WishlistFormModal from "./WishListFormModal.vue";
+import WishlistFormModal from "./WishlistFormModal.vue";
 
 const wishlistsStore = useWishlistsStore();
 const { wishlists } = storeToRefs(wishlistsStore);

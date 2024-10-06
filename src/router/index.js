@@ -22,7 +22,14 @@ const router = createRouter({
       path: '/wishlists',
       name: 'wishlists',
       component: () => import('@/views/MyWishlistsView.vue'),
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/wishlists/:id',
+      name: 'wishlist',
+      component: () => import('@/views/SingleWishlistView.vue'),
+      meta: { requiresAuth: true },
+      props: true
     }
   ]
 })

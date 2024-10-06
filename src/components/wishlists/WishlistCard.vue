@@ -66,7 +66,7 @@ onUnmounted(() => {
       />
     </div>
 
-    <div class="absolute top-2 left-2 z-10" ref="dropdownRef">
+    <div class="absolute top-2 left-2" ref="dropdownRef">
       <button
         @click.stop="isDropdownOpen = !isDropdownOpen"
         class="w-10 h-10 rounded-full flex justify-center items-center bg-primary-50 hover:bg-primary-100"
@@ -95,19 +95,21 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <BaseHeading level="5" class="mb-2">{{ wishlist.title }}</BaseHeading>
-
-    <p class="mb-4">
-      {{
-        wishlist.description.length > 50
-          ? wishlist.description.slice(0, 50) + "..."
-          : wishlist.description
-      }}
-    </p>
-
-    <p class="text-secondary-500">
-      Wishes: {{ wishlist.items ? wishlist.items.length : 0 }}
-    </p>
+    <router-link :to="`/wishlists/${wishlist.id}`">
+      <BaseHeading level="5" class="mb-2">{{ wishlist.title }}</BaseHeading>
+  
+      <p class="mb-4">
+        {{
+          wishlist.description.length > 50
+            ? wishlist.description.slice(0, 50) + "..."
+            : wishlist.description
+        }}
+      </p>
+  
+      <p class="text-secondary-500">
+        Wishes: {{ wishlist.items ? wishlist.items.length : 0 }}
+      </p>
+    </router-link>
 
     <WishlistFormModal
       v-if="isEditModalOpen"

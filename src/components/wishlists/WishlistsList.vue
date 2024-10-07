@@ -19,32 +19,34 @@ onMounted(() => {
 const openCreateModal = () => {
   isCreateModalOpen.value = true;
 };
+
+const closeCreateModal = () => {
+  isCreateModalOpen.value = false;
+};
 </script>
 
 <template>
-  <div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+  >
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+      class="border-dashed border-2 border-primary-200 p-4 rounded-lg flex items-center justify-center cursor-pointer"
+      @click="openCreateModal"
     >
-      <div
-        class="border-dashed border-2 border-primary-200 p-4 rounded-lg flex items-center justify-center cursor-pointer"
-        @click="openCreateModal"
-      >
-        <div class="text-center text-primary-700 hover:text-primary-800">
-          <FontAwesomeIcon :icon="faPlusCircle" class="text-3xl mb-2" />
-          <p class="font-bold">Create Wishlist</p>
-        </div>
+      <div class="text-center text-primary-700 hover:text-primary-800">
+        <FontAwesomeIcon :icon="faPlusCircle" class="text-3xl mb-2" />
+        <p class="font-bold">Create Wishlist</p>
       </div>
-      <WishlistCard
-        v-for="wishlist in wishlists"
-        :key="wishlist.id"
-        :wishlist="wishlist"
-      />
     </div>
-
-    <WishlistFormModal
-      v-if="isCreateModalOpen"
-      @close="isCreateModalOpen = false"
+    <WishlistCard
+      v-for="wishlist in wishlists"
+      :key="wishlist.id"
+      :wishlist="wishlist"
     />
   </div>
+
+  <WishlistFormModal
+    v-if="isCreateModalOpen"
+    @close="closeCreateModal"
+  />
 </template>

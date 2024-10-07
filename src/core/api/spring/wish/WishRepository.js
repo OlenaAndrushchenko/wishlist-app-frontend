@@ -4,8 +4,12 @@ const ITEMS_ENDPOINT = '/wishlist-items';
 
 class WishRepository {
 
-    async createWishlistItem(wishItemData) {
-        const response = await apiClient.post(`${ITEMS_ENDPOINT}/create`, wishItemData);
+    async createWishlistItem(wishData) {
+        const response = await apiClient.post(`${ITEMS_ENDPOINT}/create`, wishData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
 
         return response.data
     }
@@ -16,8 +20,12 @@ class WishRepository {
         return response.data
     }
 
-    async updateWishlistItem(id, wishItemData) {
-        const response = await apiClient.put(`${ITEMS_ENDPOINT}/${id}`, wishItemData);
+    async updateWishlistItem(id, wishData) {
+        const response = await apiClient.put(`${ITEMS_ENDPOINT}/${id}`, wishData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
 
         return response.data
     }

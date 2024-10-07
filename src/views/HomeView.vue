@@ -1,9 +1,13 @@
 <script setup>
+import FeatureSection from '@/components/homepage/FeatureSection.vue';
+import HeroSection from '@/components/homepage/HeroSection.vue';
+
 
 </script>
 
 <template>
   <main>
-    <h1>Home</h1>
+    <HeroSection />
+    <FeatureSection />
   </main>
 </template>

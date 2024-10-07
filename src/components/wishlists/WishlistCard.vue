@@ -1,11 +1,12 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
 import { useWishlistsStore } from "@/stores/wishlistStore";
 import ConfirmationModal from "@/components/common/ConfirmationModal.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faShareAlt, faLock, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { faShareAlt, faLock } from "@fortawesome/free-solid-svg-icons";
 import WishlistFormModal from "./WishlistFormModal.vue";
 import BaseHeading from "../base/BaseHeading.vue";
+import DropdownMenu from "../common/DropdownMenu.vue";
 
 const props = defineProps({
   wishlist: {
@@ -18,15 +19,21 @@ const wishlistsStore = useWishlistsStore();
 
 const isEditModalOpen = ref(false);
 const isDeleteModalOpen = ref(false);
-const isDropdownOpen = ref(false);
 
-const openEditModal = () => {
-  isEditModalOpen.value = true;
-};
-
-const openDeleteModal = () => {
-  isDeleteModalOpen.value = true;
-};
+const dropdownItems = [
+  {
+    label: 'Edit',
+    onClick: () => {
+      isEditModalOpen.value = true;
+    },
+  },
+  {
+    label: 'Delete',
+    onClick: () => {
+      isDeleteModalOpen.value = true;
+    },
+  },
+];
 
 const deleteWishlist = async () => {
   try {
@@ -36,22 +43,6 @@ const deleteWishlist = async () => {
     console.error("Failed to delete wishlist", error);
   }
 };
-
-const dropdownRef = ref(null);
-
-const handleClickOutside = (event) => {
-  if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
-    isDropdownOpen.value = false;
-  }
-};
-
-onMounted(() => {
-  document.addEventListener("click", handleClickOutside);
-});
-
-onUnmounted(() => {
-  document.removeEventListener("click", handleClickOutside);
-});
 </script>
 
 <template>
@@ -66,34 +57,7 @@ onUnmounted(() => {
       />
     </div>
 
-    <div class="absolute top-2 left-2" ref="dropdownRef">
-      <button
-        @click.stop="isDropdownOpen = !isDropdownOpen"
-        class="w-10 h-10 rounded-full flex justify-center items-center bg-primary-50 hover:bg-primary-100"
-      >
-        <FontAwesomeIcon
-          :icon="faEllipsisV"
-          class="text-primary-700 hover:text-primary-800"
-        />
-      </button>
-      <div
-        v-if="isDropdownOpen"
-        class="min-w-[150px] absolute bg-white border rounded shadow mt-2"
-      >
-        <button
-          @click.prevent="openEditModal"
-          class="px-4 py-2 text-left w-full hover:bg-primary-200"
-        >
-          Edit
-        </button>
-        <button
-          @click.prevent="openDeleteModal"
-          class="px-4 py-2 text-left w-full hover:bg-primary-200"
-        >
-          Delete
-        </button>
-      </div>
-    </div>
+    <DropdownMenu :items="dropdownItems" class="absolute top-2 left-2" />
 
     <router-link :to="`/wishlists/${wishlist.id}`">
       <BaseHeading level="5" class="mb-2">{{ wishlist.title }}</BaseHeading>

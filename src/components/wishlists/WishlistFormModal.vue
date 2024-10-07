@@ -27,8 +27,12 @@ const form = ref({
 
 const wishlistsStore = useWishlistsStore();
 
-const modalTitle = computed(() => (props.isEditMode ? "Edit Wishlist" : "Create Wishlist"));
-const submitButtonText = computed(() => (props.isEditMode ? "Save changes" : "Create"));
+const modalTitle = computed(() =>
+  props.isEditMode ? "Edit Wishlist" : "Create Wishlist"
+);
+const submitButtonText = computed(() =>
+  props.isEditMode ? "Save changes" : "Create"
+);
 
 const initializeForm = () => {
   if (props.isEditMode && props.wishlist) {
@@ -77,7 +81,12 @@ const submitForm = async () => {
       <BaseHeading level="3" class="pr-10">{{ modalTitle }}</BaseHeading>
 
       <form @submit.prevent="submitForm" class="space-y-4">
-        <FormField id="title" label="Title" v-model="form.title" required />
+        <FormField
+          id="title"
+          label="Title"
+          v-model="form.title"
+          :required="true"
+        />
 
         <div>
           <FormField
@@ -105,7 +114,9 @@ const submitForm = async () => {
         </div>
 
         <div class="flex justify-end space-x-2">
-          <BaseButton variant="secondary" @click="emit('close')">Cancel</BaseButton>
+          <BaseButton variant="secondary" @click="emit('close')">
+            Cancel
+          </BaseButton>
           <BaseButton type="submit">{{ submitButtonText }}</BaseButton>
         </div>
       </form>

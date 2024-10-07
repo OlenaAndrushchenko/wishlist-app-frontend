@@ -2,8 +2,8 @@
 import { ref } from "vue";
 import { useAuthStore } from "@/stores/authStore";
 import FormField from "@/components/base/FormField.vue";
-import BaseHeading from "../base/BaseHeading.vue";
 import BaseButton from "../base/BaseButton.vue";
+import BaseHeading from "../base/BaseHeading.vue";
 
 const authStore = useAuthStore();
 
@@ -12,21 +12,23 @@ const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 
-const emailError = ref("");
+const errorMessage = ref("");
 const passwordError = ref("");
+const successMessage = ref("");
+
 
 const validateForm = () => {
-  passwordError.value = null;
-  emailError.value = null;
+  passwordError.value = "";
+  errorMessage.value = "";
   let isValid = true;
 
   if (password.value !== confirmPassword.value) {
-    passwordError.value = "Passwords do not match";
+    passwordError.value = "Passwords do not match.";
     isValid = false;
   }
 
   if (password.value.length < 5) {
-    passwordError.value = "Password must be at least 5 characters long";
+    passwordError.value = "Password must be at least 5 characters long.";
     isValid = false;
   }
 
@@ -42,9 +44,10 @@ async function handleSignUp() {
       password.value = "";
       confirmPassword.value = "";
       email.value = "";
-      confirmEmail.value = "";
+      successMessage.value = "Registration successful! You can now log in.";
     } catch (error) {
       console.error("Registration failed:", error);
+      errorMessage.value = authStore.errorMessage || "Registration failed. Please try again.";
     }
   }
 }
@@ -74,7 +77,6 @@ async function handleSignUp() {
         placeholder="Enter your email"
         :required="true"
         v-model="email"
-        :error="emailError"
       />
 
       <FormField
@@ -97,7 +99,14 @@ async function handleSignUp() {
         :error="passwordError"
       />
     </div>
-
+    
     <BaseButton type="submit" class="w-full"> Sign Up </BaseButton>
   </form>
+  <p v-if="successMessage" class="text-green-700 text-sm">
+    {{ successMessage }}
+  </p>
+
+  <p v-if="errorMessage" class="text-red-500 text-sm">
+    {{ errorMessage }}
+  </p>
 </template>

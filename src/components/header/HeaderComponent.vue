@@ -11,13 +11,11 @@ const isAuthenticated = computed(() => authStore.isAuthenticated);
 <template>
   <header class="border-b">
     <div class="container mx-auto flex flex-row justify-between items-center p-4">
-      <div>LOGO</div>
+      <RouterLink to="/"> LOGO </RouterLink>
       <nav class="w-fit">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <template v-if="isAuthenticated">
-          <RouterLink to="/wishlists">My Wishlists</RouterLink>
-        </template>
+        <div v-if="isAuthenticated">
+          <RouterLink to="/wishlists"> My Wishlists </RouterLink>
+        </div>
       </nav>
       <AuthButtons />
     </div>

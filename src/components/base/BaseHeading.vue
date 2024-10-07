@@ -9,7 +9,7 @@ const props = defineProps({
   },
   style: {
     type: String,
-    default: 'text-secondary-900 font-medium',
+    default: 'font-medium text-primary-900',
   },
   text: String
 });
@@ -22,9 +22,20 @@ const textSizeClass = computed(() => {
     '4': '2xl',
     '5': 'xl'
   };
+
+  const responsiveSizeMapping = {
+    '5xl': '6xl',
+    '4xl': '5xl',
+    '3xl': '4xl',
+    '2xl': '3xl',
+    'xl': '2xl',
+    'lg': 'xl'
+  };
+
   const baseSize = sizeMapping[props.level] || '3xl';
-  const responsiveSize = `md:text-${parseInt(baseSize.slice(0, -2)) + 1}xl`;
-  return `text-${baseSize} ${responsiveSize}`;
+  const responsiveSize = responsiveSizeMapping[baseSize] || '4xl';
+
+  return `text-${baseSize} md:text-${responsiveSize}`;
 });
 </script>
 

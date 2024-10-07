@@ -4,6 +4,8 @@ import { useAuthStore } from "@/stores/authStore";
 import BaseButton from "../base/BaseButton.vue";
 import AuthModal from "../auth/AuthModal.vue";
 import { useRouter } from "vue-router";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faUserPlus, faSignIn, faPersonWalkingDashedLineArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const router = useRouter();
 
@@ -36,18 +38,18 @@ const logout = () => {
 <template>
   <div>
     <div v-if="isAuthenticated">
-      <button
-        @click="logout"
-        class="text-primary-700 hover:text-primary-800 font-bold"
-      >
+      <BaseButton variant="secondary" @click="logout">
         Logout
-      </button>
+        <FontAwesomeIcon :icon=faPersonWalkingDashedLineArrowRight class="ml-2" />
+      </BaseButton>
     </div>
     <div v-else>
       <BaseButton variant="secondary" @click="openLoginModal">
+        <FontAwesomeIcon :icon=faSignIn class="mr-2 hidden md:inline" />
         Sign In
       </BaseButton>
-      <BaseButton variant="primary" @click="openRegisterModal" class="ml-2">
+      <BaseButton variant="primary" @click="openRegisterModal" class="ml-3">
+        <FontAwesomeIcon :icon=faUserPlus class="mr-2 hidden md:inline" />
         Sign Up
       </BaseButton>
     </div>

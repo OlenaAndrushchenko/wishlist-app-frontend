@@ -5,6 +5,8 @@ import FormField from "@/components/base/FormField.vue";
 import BaseButton from "../base/BaseButton.vue";
 import BaseHeading from "../base/BaseHeading.vue";
 
+const props = defineProps(["closeModal"]);
+
 const authStore = useAuthStore();
 
 const username = ref("");

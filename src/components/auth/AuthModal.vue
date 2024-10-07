@@ -36,7 +36,7 @@ const closeModal = () => {
     <div class="relative mx-4 md:mx-16 bg-primary-50 rounded-[20px] max-h-[90vh] overflow-y-auto">
       
       <div class="min-w-[90vw] sm:min-w-[500px] px-10 py-10 flex-col gap-6 inline-flex text-secondary-700">
-        <component :is="currentForm === 'login' ? SignInForm : SignUpForm" :closeModal="closeModal" />
+        <component :is="currentForm === 'login' ? SignInForm : SignUpForm" :close-modal="closeModal" />
     
         <div v-if="currentForm === 'login'" class="flex flex-wrap gap-1.5">
           <span>Don't have an account?</span>

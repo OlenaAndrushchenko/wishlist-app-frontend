@@ -40,16 +40,16 @@ const logout = () => {
     <div v-if="isAuthenticated">
       <BaseButton variant="secondary" @click="logout">
         Logout
-        <FontAwesomeIcon :icon=faPersonWalkingDashedLineArrowRight class="ml-2" />
+        <FontAwesomeIcon :icon="faPersonWalkingDashedLineArrowRight" class="ml-2" />
       </BaseButton>
     </div>
     <div v-else>
       <BaseButton variant="secondary" @click="openLoginModal">
-        <FontAwesomeIcon :icon=faSignIn class="mr-2 hidden md:inline" />
+        <FontAwesomeIcon :icon="faSignIn" class="mr-2 hidden md:inline" />
         Sign In
       </BaseButton>
       <BaseButton variant="primary" @click="openRegisterModal" class="ml-3">
-        <FontAwesomeIcon :icon=faUserPlus class="mr-2 hidden md:inline" />
+        <FontAwesomeIcon :icon="faUserPlus" class="mr-2 hidden md:inline" />
         Sign Up
       </BaseButton>
     </div>

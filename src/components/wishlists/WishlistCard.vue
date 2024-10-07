@@ -47,7 +47,7 @@ const deleteWishlist = async () => {
 
 <template>
   <div
-    class="bg-white border-2 border-primary-100 text-secondary-700 px-6 pt-14 pb-6 rounded-lg relative transition-transform duration-300 transform hover:scale-105"
+    class="bg-white border-2 border-primary-100 text-secondary-700 px-6 pt-14 pb-6 rounded-lg relative"
   >
     <div class="absolute top-2 right-2">
       <FontAwesomeIcon

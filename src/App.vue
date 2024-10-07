@@ -7,7 +7,7 @@ import FooterComponent from './components/footer/FooterComponent.vue';
 <template>
   <HeaderComponent />
   
-  <main>
+  <main class="min-h-screen">
     <RouterView />
   </main>
 

@@ -83,7 +83,7 @@ npm run test:coverage
 
 ## Project Preview
 
-<img src="project-screenshots/wishapp-home.png" alt="homepage" width="400"> <img src="project-screenshots/wishapp-auth.png" alt="login modal" width="400">
+<img src="project-screenshots/wishapp-home.png" alt="homepage" width="400"> <img src="project-screenshots/wishapp-wishlists.png" alt="wishlists" width="400">
 <img src="project-screenshots/wishapp-wishes.png" alt="my wishlist page" width="400"> <img src="project-screenshots/wishapp-edit-wish.png" alt="edit wish modal" width="400">
 
 ## Story Behind the Project

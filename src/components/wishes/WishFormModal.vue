@@ -143,6 +143,7 @@ const submitForm = async () => {
         <FormField
           id="itemUrl"
           label="Item URL"
+          type="url"
           v-model="form.itemUrl"
           placeholder="https://example.com/item"
         />
